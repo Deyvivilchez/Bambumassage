@@ -79,4 +79,4 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGFKV8K4" height="0" width="0"
         style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<script src="{{ mix('js/faqchat.js') }}"></script>
+<script src="{{ mix('js/FaqChat.js') }}"></script>
