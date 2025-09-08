@@ -56,3 +56,6 @@ meilisearch.exe
 meilisearch
 # Optional: ignore dumps (if used for backup)
 dumps/
+
+# Binarios grandes
+meilisearch
