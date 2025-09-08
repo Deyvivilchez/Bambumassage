@@ -53,6 +53,6 @@ composer.lock
 
 # MeiliSearch binary (from your project)
 meilisearch.exe
-
+meilisearch
 # Optional: ignore dumps (if used for backup)
 dumps/
