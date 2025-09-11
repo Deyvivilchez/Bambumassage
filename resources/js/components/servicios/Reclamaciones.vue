@@ -345,7 +345,13 @@ export default {
 
                 return false
             }
-            Swal.fire("error", "Error!", post.data.message);
+          //  Swal.fire("error", "Error!", post.data.message);
+            Swal.fire({
+                    title: "Oh!",
+                    text: post.data.message,
+                    icon: "error"
+                    });
+
 
         },
         verDetalle(item){
