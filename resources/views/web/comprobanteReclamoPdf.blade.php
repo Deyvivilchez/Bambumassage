@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,16 +55,17 @@
     </tr>
     <!-- Datos Generales -->
     <tr>
-      <td>Fecha: {{ \Carbon\Carbon::parse($reclamo->created_at)->format('d/m/Y') }}</td>
+      <td><strong>Fecha:</strong> {{ \Carbon\Carbon::parse($reclamo->created_at)->format('d/m/Y') }}</td>
       <td><strong>N° {{ $reclamo->codigo_reclamo }}</strong></td>
     </tr>
     <tr>
       <td colspan="2">
         {{-- NOMBRE DE LA PERSONA NATURAL O RAZÓN SOCIAL DE LA PERSONA JURÍDICA / RUC DEL PROVEEDOR:<br> --}}
-
-        {{ $reclamo->persona->nombres }} {{ $reclamo->persona->apellido_paterno }} {{ $reclamo->persona->apellido_materno }}:<br>
-        {{ config('app.proveedor', 'Nombre del Proveedor') }}<br>
-        [DOMICILIO DEL ESTABLECIMIENTO DONDE SE COLOCA EL LIBRO DE RECLAMACIONES / CÓDIGO DE IDENTIFICACIÓN]
+        20611012978 - SOLUCIONES & ESTRATEGIAS WELLNESS S.A.C. <br>
+        {{-- {{ $reclamo->persona->nombres }} {{ $reclamo->persona->apellido_paterno }} {{ $reclamo->persona->apellido_materno }}:<br> --}}
+        {{-- {{ config('app.proveedor', 'Nombre del Proveedor') }}<br> --}}
+        {{-- [DOMICILIO DEL ESTABLECIMIENTO DONDE SE COLOCA EL LIBRO DE RECLAMACIONES / CÓDIGO DE IDENTIFICACIÓN] --}}
+        Direccion : AV. PROLONGACION PASEO DE LA CASTELLANA NRO. 1320 DPTO. 1004 LIMA - LIMA - SANTIAGO DE SURCO
       </td>
     </tr>
     <!-- 1. Identificación del Consumidor Reclamante -->
@@ -71,22 +74,22 @@
     </tr>
     <tr>
       <td colspan="2">
-        Nombre: {{ $reclamo->persona->nombres }} {{ $reclamo->persona->apellido_paterno }} {{ $reclamo->persona->apellido_materno }}<br>
+        DNI / CE: {{ $reclamo->persona->num_documento }}/  Nombre: {{ $reclamo->persona->nombres }} {{ $reclamo->persona->apellido_paterno }} {{ $reclamo->persona->apellido_materno }}<br>
         Domicilio: {{ $reclamo->persona->direccion }}<br>
-        DNI / CE: {{ $reclamo->persona->num_documento }}<br>
-        Teléfono / Email: {{ $reclamo->persona->celular }} / {{ $reclamo->persona->correo }}
+
+        Teléfono: {{ $reclamo->persona->celular }} -  Email:  {{ $reclamo->persona->correo }}
       </td>
     </tr>
-    <tr>
+    {{-- <tr>
       <td colspan="2">Padre o Madre (para el caso de menores de edad): _______________________</td>
-    </tr>
+    </tr> --}}
     <!-- 2. Identificación del Bien Contratado -->
     <tr>
       <td colspan="2"><strong>2. IDENTIFICACIÓN DEL BIEN CONTRATADO</strong></td>
     </tr>
     <tr>
       <td>Producto/Servicio:  {{ $reclamo->producto_servicio }} </td>
-      <td>Monto reclamado: _______________________</td>
+      <td>Monto reclamado:  {{ $reclamo->monto }}</td>
     </tr>
     <!-- 3. Detalle de la Reclamación y Pedido del Consumidor -->
     <tr>
@@ -100,24 +103,41 @@
       <td colspan="2">Detalle: {{ $reclamo->detalle }}</td>
     </tr>
     <tr>
-      <td colspan="2">Pedido: _______________________</td>
+      <td colspan="2">Pedido: {{$reclamo->pedido}}</td>
     </tr>
-    <tr>
-      <td>Firma del consumidor: _______________________</td>
-      <td></td>
-    </tr>
+
     <!-- 4. Observaciones y Acciones Adoptadas por el Proveedor -->
     <tr>
       <td colspan="2"><strong>4. OBSERVACIONES Y ACCIONES ADOPTADAS POR EL PROVEEDOR</strong></td>
     </tr>
     <tr>
-      <td>Fecha de comunicación de la respuesta: _______________________</td>
-      <td></td>
+      <td>Fecha de comunicación de la respuesta: <br>
+        {{$reclamo->fecha_respuesta}}
+      </td>
+      <td>
+        {{$reclamo->respuesta}}
+      </td>
     </tr>
     <tr>
-      <td>Firma del proveedor: _______________________</td>
-      <td></td>
+      <td colspan="2"><strong>5. ACUERDOS FINALES</strong>   {{$reclamo->fecha_acuerdo_final}}</td>
     </tr>
+    <tr>
+      <td colspan="2">
+        {{$reclamo->acuerdo_final}}
+      </td>
+    </tr>
+
+
+    <tr>
+      <td style="height: 100px">
+         Firma del proveedor: <br>
+      </td >
+      <td style="height: 100px">
+        Firma del cliente: <br>
+
+      </td>
+    </tr>
+
     <tr>
       <td colspan="2">
         <strong>* RECLAMO:</strong> Disconformidad relacionada a los bienes o servicios.<br>

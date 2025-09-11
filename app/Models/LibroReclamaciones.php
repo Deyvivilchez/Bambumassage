@@ -14,16 +14,12 @@ class LibroReclamaciones extends Model
     protected $primaryKey = 'id_reclamo';
 
     protected $fillable = [
-        'id_persona',
-        'codigo_reclamo',
-        'tipo_documento',
-        'num_documento',
-        'detalle',
-        'estado',
-        'fecha_reclamo',
-        'producto_servicio',
-        'tipo_reclamo',  
-    ];
+    'id_persona',
+    'codigo_reclamo', 'tipo_documento',
+    'num_documento', 'detalle', 'estado',
+    'fecha_reclamo', 'producto_servicio',
+    'tipo_reclamo', 'fecha_reclamo',
+    'pedido', 'monto'];
 
     protected static function boot()
     {
@@ -32,14 +28,14 @@ class LibroReclamaciones extends Model
         static::creating(function ($reclamo) {
             // Generar el código único para el reclamo (Ej: RCL-000001)
             $ultimoCodigo = static::latest()->first();
-            $reclamo->codigo_reclamo = 'LRC-' . str_pad(($ultimoCodigo ? (intval(substr($ultimoCodigo->codigo_reclamo, 4)) + 1) : 1), 6, '0', STR_PAD_LEFT);
+            $reclamo->codigo_reclamo = 'LRC-' . str_pad($ultimoCodigo ? intval(substr($ultimoCodigo->codigo_reclamo, 4)) + 1 : 1, 6, '0', STR_PAD_LEFT);
         });
         // static::creating(function ($reclamo) {
         //     // Bloquea la consulta para evitar conflictos en concurrencia
         //     $ultimoCodigo = static::lockForUpdate()->latest('id_reclamo')->first();
-    
+
         //     $nuevoNumero = $ultimoCodigo ? (intval(substr($ultimoCodigo->codigo_reclamo, 4)) + 1) : 1;
-    
+
         //     $reclamo->codigo_reclamo = 'RCL-' . str_pad($nuevoNumero, 6, '0', STR_PAD_LEFT);
         // });
     }
@@ -48,7 +44,4 @@ class LibroReclamaciones extends Model
     {
         return $this->belongsTo(Persona::class, 'id_persona', 'id_persona');
     }
-
-
-
 }

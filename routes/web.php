@@ -32,7 +32,7 @@ Route::get('/productoservicios', function () {return view('app');});
 Route::get('/portadaSlider', function () {return view('app');});
 Route::get('/Eventos', function () {return view('app');});
 Route::get('/FaqAdmin', function () {return view('app');});
-
+Route::get('/Reclamaciones', function () {return view('app');});
 
  Route::post('listaCategorias',[CategoriasController::class,'listaCategorias']);
  Route::post('listProductos',[ProductoServicioController::class,'ProductoServicioController']);

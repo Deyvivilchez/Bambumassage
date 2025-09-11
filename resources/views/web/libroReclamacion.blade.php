@@ -127,16 +127,32 @@
                                         <option value="Queja">Queja</option>
                                     </select>
                                 </div>
+                                 <div class="row">
+                                    <div class="col-6">
+                                        <label>📜 Código de Compra (Boleta/Factura):</label>
+                                         <input type="text" class="form-control" v-model="form.codigo_compra" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label>S/ Monto:</label>
+                                        <input type="text" class="form-control" v-model="form.monto"
+                                               inputmode="decimal"
+                                               @input="form.monto = form.monto.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                               required>
+                                    </div>
+
+
+                                </div>
 
                                 <div class="form-group">
                                     <label>📝 Detalle del Reclamo:</label>
                                     <textarea class="form-control" v-model="form.detalle" rows="4" required></textarea>
                                 </div>
-
-                                <div class="form-group">
-                                    <label>📜 Código de Compra (Boleta/Factura):</label>
-                                    <input type="text" class="form-control" v-model="form.codigo_compra" required>
+                                 <div class="form-group">
+                                    <label>📜 Pedido:</label>
+                                    <textarea class="form-control" v-model="form.pedido" rows="4" required></textarea>
                                 </div>
+
+
 
                                 <button type="submit" class="btn btn-custom btn-block">📩 Enviar Reclamo</button>
                             </form>
@@ -284,7 +300,7 @@
                         telefono: '',
                         email: '',
                         direccion: '',
-                        tipo: 'Reclamo',
+                        tipo: 'Queja',
                         detalle: '',
                         codigo_compra: '',
                         prod_serv: 'SERVICIO'
@@ -352,22 +368,60 @@
                     </svg>`).removeAttr("disabled");
                     }
                 },
+                // async enviarFormulario() {
+                //     try {
+                //         let response = await axios.post('api/reclamaciones', this.form);
+                //         Swal.fire('Éxito', 'Reclamo enviado correctamente', 'success');
+                //         this.form = {
+                //             nombre: '',
+                //             dni_ruc: '',
+                //             telefono: '',
+                //             email: '',
+                //             direccion: '',
+                //             tipo: 'Reclamo',
+                //             detalle: '',
+                //             codigo_compra: ''
+                //         };
+                //     } catch (error) {
+                //         Swal.fire('Error', 'Hubo un problema al enviar el reclamo', 'error');
+                //     }
+                // },
                 async enviarFormulario() {
+
+                    this.loading = true;
                     try {
+                        // Enviamos el formulario al servidor
                         let response = await axios.post('api/reclamaciones', this.form);
-                        Swal.fire('Éxito', 'Reclamo enviado correctamente', 'success');
-                        this.form = {
-                            nombre: '',
-                            dni_ruc: '',
-                            telefono: '',
-                            email: '',
-                            direccion: '',
-                            tipo: 'Reclamo',
-                            detalle: '',
-                            codigo_compra: ''
-                        };
+
+                        // Mostramos el mensaje de éxito
+                        Swal.fire('Éxito', `Reclamo enviado correctamente codigo : ${response.data.codigo_reclamo}`, 'success')
+                            .then(() => {
+                                // Limpiamos el formulario
+                                this.form = {
+                                    nombre: '',
+                                    solo_nombres: '',
+                                    ap_paterno: '',
+                                    ap_materno: '',
+                                    dni_ruc: '',
+                                    telefono: '',
+                                    email: '',
+                                    direccion: '',
+                                    tipo: 'Reclamo',
+                                    detalle: '',
+                                    codigo_compra: '',
+                                    prod_serv: 'SERVICIO',
+                                    pedido:''
+                                };
+
+                                // Redirigimos a la página del reclamo usando el código recibido en la respuesta
+                                window.location.href = `/libro-reclamaciones/${response.data.codigo_reclamo}`;
+                            });
                     } catch (error) {
+                        // En caso de error mostramos un mensaje
                         Swal.fire('Error', 'Hubo un problema al enviar el reclamo', 'error');
+                    }
+                    finally {
+                        this.loading = false;
                     }
                 },
                 async modalReclamo() {
@@ -375,7 +429,7 @@
                     $("#modal-consultas").modal('toggle');
                 },
                 async BuscarReclamo() {
-                   
+
                     try {
                         const response = await axios.get(`api/reclamaciones/${this.codbusqueda}`);
 

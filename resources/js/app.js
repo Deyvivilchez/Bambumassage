@@ -10,7 +10,7 @@ import App from './components/App.vue';
 //importamos Axios
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-
+import Paginacion from "./components/Paginacion.vue";
 //Importamos y configuramos el Vue-router
 import VueRouter from 'vue-router';
 import { routes } from './routes';
@@ -22,9 +22,11 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 Vue.component('faq-chat', FaqChat);
-Vue.use(VueQuillEditor)
+Vue.use(VueQuillEditor).component("paginacion", Paginacion)
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+
+
 
 
 const router = new VueRouter({

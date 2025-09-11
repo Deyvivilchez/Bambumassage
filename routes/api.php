@@ -41,7 +41,7 @@ Route::post('consultaReniec',[PersonasController::class,'consultaReniec']);
 Route::get('EvntosEnModal',[EventosController::class,'EvntosEnModal']);
 //Route::resource('portadas',App\Http\Controllers\PortadaSliderController::class);
 
-Route::resource('reclamaciones',LibroReclamacionesController::class);
+//Route::resource('reclamaciones',LibroReclamacionesController::class);
 
 
 
@@ -68,4 +68,11 @@ Route::post('update_preguntaSinRespuesta/{id}', [FaqController::class, 'update_p
 
 
 
-///comentario para subir 
+Route::resource('reclamaciones',LibroReclamacionesController::class);
+Route::post('consultaReniec',[PersonasController::class,'consultaReniec']);
+Route::post('respoder_reclamo',[LibroReclamacionesController::class,'respoder_reclamo']);
+Route::post('resolver_reclamo',[LibroReclamacionesController::class,'resolver_reclamo']);
+Route::get('buscarReclamos/{texto}/{cantidad?}', [LibroReclamacionesController::class, 'buscarReclamos']);
+
+
+///comentario para subir

@@ -5,6 +5,7 @@ const productoservicios = () =>  import ('./components/servicios/Producto.vue');
 const portadas = () => import ('./components/servicios/Portadas.vue');
 import Eventos from './components/servicios/Eventos.vue'
 import FaqAdmin from './components/servicios/FaqAdmin.vue'
+import Reclamaciones from './components/servicios/Reclamaciones.vue'
 
 //importamos los demas componenetes
 export const routes = [
@@ -38,5 +39,10 @@ export const routes = [
         name: 'FaqAdmin',
         path: '/FaqAdmin',
         component: FaqAdmin,
+    },
+    {
+        path: "/Reclamaciones",
+        name: "Reclamaciones",
+        component: Reclamaciones,
     },
 ];

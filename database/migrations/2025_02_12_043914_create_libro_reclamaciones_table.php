@@ -27,9 +27,12 @@ class CreateLibroReclamacionesTable extends Migration
             $table->timestamps();
             $table->softDeletes(); // Eliminación lógica
         });
-        
-        
-        
+
+
+
+
+
+
     }
 
     /**

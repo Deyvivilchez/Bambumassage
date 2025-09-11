@@ -9,7 +9,7 @@
               <i class="icon-speedometer menu-icon"></i><span class="nav-text">Panel Administracion</span>
             </a>
             <ul aria-expanded="false">
-              <li> 
+              <li>
                 <router-link exact-active-class="active" to="/inicio" class="nav-link">Inicio</router-link>
               </li>
               <li>
@@ -26,6 +26,9 @@
               </li>
               <li>
                 <router-link exact-active-class="active" to="/FaqAdmin" class="nav-link">Chatbot (FAQs)</router-link>
+              </li>
+              <li>
+                 <router-link exact-active-class="active" to="/Reclamaciones" class="nav-link"> Reclamaciones</router-link>
               </li>
             </ul>
           </li>
