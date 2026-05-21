@@ -28,7 +28,7 @@
                 <router-link exact-active-class="active" to="/FaqAdmin" class="nav-link">Chatbot (FAQs)</router-link>
               </li>
               <li>
-                 <router-link exact-active-class="active" to="/Reclamaciones" class="nav-link"> Reclamaciones</router-link>
+                 <router-link exact-active-class="active" to="/Reclamaciones" class="nav-link"> Reclamos/Quejas</router-link>
               </li>
             </ul>
           </li>
