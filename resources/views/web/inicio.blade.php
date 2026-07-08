@@ -7,9 +7,9 @@
     <div class="super_container" id="appgg">
         @include('web.componentes_web.nav')
         <div class="home_slider_container content-slider">
-            <div class="owl-carousel owl-theme home_slider   promociones_card " id="home_slider" style="margin-top: 50px">
+            <div class="owl-carousel owl-theme home_slider promociones_card" id="home_slider">
                 @foreach ($sliderIni as $sliderIni)
-                    <div class="owl-item mt-5">
+                    <div class="owl-item">
                         {{-- <div class="home_slider_background bg-danger" 
                             style="background-image:url(web/images/inicio/{{ $sliderIni->imagen }})">
                                 <img style="web/images/inicio/{{ $sliderIni->imagen }}" style="background: #FFF">
@@ -19,10 +19,10 @@
                 @endforeach
             </div>
         </div>
-        <div class="cardsmodule__base p-0 m-0" style="background-color: #adcabd;">
+        <div class="cardsmodule__base p-0 m-0 bmb-section-menu">
             <div
                 class="container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-android">
-                <div class="row mt-3 mb-5">
+                <div class="row m-0 bmb-section-menu-row">
                     <div class="col-12	col-sm-4	col-md-4	col-lg-4	col-xl-4 inicio-submenu py-1"
                         style="background-color: #6FB596;">
 
@@ -54,33 +54,38 @@
             </div>
         </div>
         {{-- quines somos inicio  --}}
-        <div class="cardsmodule__base background--100 " style="background-color: #FFF;" id="quienes-somos">
+        <div class="cardsmodule__base background--100 bmb-about-luxe" id="quienes-somos">
+            <div class="bmb-bamboo-deco bmb-bamboo-deco-left"></div>
+            <div class="bmb-bamboo-deco bmb-bamboo-deco-right"></div>
             <div
                 class="container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-android">
-                <div class="row m-0 p-0">
-                    <div class="	col-sm-12	col-md-6	col-lg-6	col-xl-6 d-flex justify-content-sm-center">
-                        <div class="px-0 h-100 col-sm-8 ">
-                            <div class="fondo-quienes-somos inicio-submenu"
-                                style="position: absolute ;font-size: 27px; ">
-                                <a style="color: #FFF"> {{ $conociendonos[0]->autor }}
-                                </a>
+                <div class="row m-0 p-0 align-items-center bmb-about-grid">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="bmb-about-photo-wrap">
+                            <div class="bmb-about-photo">
+                                <img src="web/images/inicio/{{ $conociendonos[0]->imagen }}" alt="{{ $conociendonos[0]->autor }}">
+                                <div class="bmb-about-name">
+                                    <span>{{ $conociendonos[0]->autor }}</span>
+                                </div>
                             </div>
-                            <img src="web/images/inicio/{{ $conociendonos[0]->imagen }}" alt=""
-                                style="width: 100%; height: 100%;">
                         </div>
                     </div>
-                    <div class="my-sm-2 col-sm-12	col-md-6	col-lg-6	col-xl-6  d-flex justify-content-sm-center">
-                        <div class="row  d-flex justify-content-center">
-                            <div class="col-12 p-0">
-                                <div class="my-2 d-flex justify-content-center">
-                                    <h2 style="color: #5b8676; font-weight: bold; ">Quienes somos</h2>
-                                </div>
+                    <div class="my-sm-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="bmb-about-copy">
+                            <span class="bmb-about-kicker">Bambú Massage</span>
+                            <h2>Quienes somos</h2>
+                            <div class="bmb-about-line"></div>
+                            <p>
+                                {{ $conociendonos[0]->descripcion }}
+                            </p>
+                            <div class="bmb-about-tags">
+                                <span>Bienestar</span>
+                                <span>Calidad</span>
+                                <span>Atención personalizada</span>
                             </div>
-                            <div class="col-12 my-0">
-                                <div class="d-flex justify-content-sm-center"
-                                    style="text-align: justify; color: rgb(98, 177, 159); font-size: 1.02rem;">
-                                    {{ $conociendonos[0]->descripcion }}
-                                </div>
+                            <div class="bmb-about-signature">
+                                <span></span>
+                                <strong>Relajación con esencia natural</strong>
                             </div>
                         </div>
                     </div>
@@ -90,32 +95,17 @@
 
         {{-- quienes somo fin --}}
 
-        <div class="cardsmodule__base background--100  mt-0 "
-            style="padding-top: 0px; padding-bottom: 00px; 
-         background: #ffff;">
-            <div
-                class="container swiper-container
-            swiper-container-initialized swiper-container-horizontal swiper-container-android text-center">
-
-                <hr
-                    style=" position: relative;
-                                top: 10px;
-                                border: none;
-                                height: 2px;
-                                background: rgba(27, 209, 158, 0.569);
-                                margin-bottom: 40px;
-                                width: 100%;">
-
-            </div>
+        <div class="bmb-section-divider">
+            <span></span>
         </div>
 
 
         {{-- nuestros serv inicio --}}
 
-        <div class="cardsmodule__base background--100  my-4 p-1" style="background-color: #FFF;">
+        <div class="cardsmodule__base background--100 bmb-services-start">
             <div
                 class="container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-android">
-                <div class="row  ">
+                <div class="row bmb-services-heading">
 
                     <div class="col d-flex justify-content-center">
 
@@ -124,14 +114,13 @@
                     </div>
 
                 </div>
-                <div class=" flex-wrap  w-100 d-inline-flex d-flex justify-content-center mb-5">
+                <div class="flex-wrap w-100 d-inline-flex d-flex justify-content-center bmb-services-grid">
                     @foreach ($servicios as $key => $serv)
-                        <div class="col-lg-4 mt-5 rounded">
-                            <a href="{{ $serv->link_redireccion }}" target="_blank">
-                                <div class="col-lg-12 ">
+                        <div class="col-sm-6 col-lg-4 bmb-service-card">
+                            <a href="{{ $serv->link_redireccion }}" target="_blank" class="bmb-service-link">
+                                <div class="col-lg-12 p-0">
                                     <div class="img-area">
-                                        <img src="web/images/img_servicios/{{ $serv->imagen }}" alt=""
-                                            style="width: 100%; height: 100%;">
+                                        <img src="web/images/img_servicios/{{ $serv->imagen }}" alt="{{ $serv->nombre_categoria }}">
                                         <div class="img-text">
                                             <h4 class="">{{ $serv->nombre_categoria }}</h4>
                                         </div>
@@ -170,40 +159,31 @@
         </div> --}}
         {{-- nuestors servisios fin --}}
 
-        <div class="cardsmodule__base background--100  my-2"
-            style="background-color: #e2ebe0; padding-top: 22px !important;margin-bottom: 22px !important;padding-bottom: 35px;">
+        <div class="cardsmodule__base background--100 my-2 bmb-corporate-section">
             <div
                 class="container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-android">
 
 
-                <div class="w-100  p-1">
-                    <p class="text-justify  inicio-submenu">
-                    <div class="titulosSeccionCorporativa">
-                        Ventas corporativas
+                <div class="w-100 p-1 bmb-corporate-content">
+                    <div class="bmb-corporate-copy">
+                        <span class="bmb-corporate-kicker">Empresas y equipos</span>
+                        <div class="titulosSeccionCorporativa">
+                            Ventas corporativas
+                        </div>
+                        <p>
+                            Brindamos una opción diferente a empresas públicas o privadas que deseen premiar, motivar y
+                            fidelizar a sus colaboradores, clientes fuerza de ventas o proveedores; ofreciendo una amplia
+                            galeria de terapias relajantes y descontracturantes junto a una asesoría personalizada,
+                            garantizando nuestra excelente calidad de servicio y sus altos estandares.
+                        </p>
                     </div>
-
-                    </p>
-                    <br>
-                    <div class="d-flex justify-content-sm-center px-4"
-                        style="text-align: justify; color: rgb(141, 157, 153); font-size: 1.02rem;">
-                        Brindamos una opción diferente a empresas públicas o privadas que deseen premiar, motivar y
-                        fidelizar a
-                        sus colaboradores, clientes fuerza de ventas o proveedores; ofreciendo una amplia galeria de
-                        terapias
-                        relajantes y descontracturantes junto a una asesoría personalizada, garantizando nuestra
-                        excelente calidad de servicio y sus altos estandares.
-                    </div>
-                    <p class="text-justify px-4 ">
-                    <div class="col-xl-12   ventas_corporativas d-flex justify-content-end ">
-                        <div class="content_ventas_contacto" style=" font-size:20px;">
-                            {{-- <h5><span class="">wsp</span> 997508484</h5> --}}
+                    <div class="ventas_corporativas bmb-corporate-action">
+                        <div class="content_ventas_contacto">
                             <a href="https://wa.me/51997508484" target="_blank">
                                 <button>Contactar</button>
                             </a>
-
                         </div>
                     </div>
-                    </p>
                 </div>
             </div>
         </div>
@@ -219,21 +199,21 @@
 
 
         {{-- nuestras salas inicio --}}
-        <div class="cardsmodule__base background--100  my-2" style="background-color: #FFFF;" id="nuestras-salas">
+        <div class="cardsmodule__base background--100 my-2 bmb-rooms-polish" id="nuestras-salas">
             <div
                 class="container swiper-container swiper-container-initialized
                         swiper-container-horizontal swiper-container-android text-center">
 
                 <div class="titulosSeccion">Nuestras Salas</div>
 
-                <section id="portfolio" class="portfolio m-0 p-0">
+                <section id="portfolio" class="portfolio m-0 p-0 bmb-rooms-gallery">
                     <div class="container" data-aos="fade-up">
                         <div class="row" data-aos="fade-up" data-aos-delay="100">
-                            <div class="col-lg-12 d-flex justify-content-center my-2">
+                            <div class="col-lg-12 d-flex justify-content-center my-2 bmb-room-filter-wrap">
                                 <ul id="portfolio-flters">
                                     {{-- <li data-filter="*" class="filter-active" style="font-size: 2vw;" >All</li> --}}
                                     @foreach ($sedes as $sede)
-                                        <li data-filter=".sede-{{ $sede->id_sede }}" style="font-size:15px;"
+                                        <li data-filter=".sede-{{ $sede->id_sede }}"
                                             id="sede-{{ $sede->id_sede }}" class="<?php if ($sede->id_sede == 1) {
                                                 echo 'filter-active';
                                             } ?>"
@@ -245,7 +225,7 @@
                             </div>
                         </div>
 
-                        <div class="scrollbar-personalizado px-2">
+                        <div class="scrollbar-personalizado px-2 bmb-room-scroll">
 
                             <div class="row portfolio-container  justify-content-center ">
                                 @foreach ($salas as $ks => $sala)
@@ -264,33 +244,28 @@
 
         {{-- nuestras salas fin --}}
         {{-- inicio experiencias style="background-color: #FFFF;"  style="background-color: #FFFF;" style="background-image: url('web/images/inicio/degradado-seccion.jpg')" --}}
-        <div class="cardsmodule__base background-100  my-2" style="background: #E2F2EF;" id="experiencias">
+        <div class="cardsmodule__base background-100 my-2 bmb-experience-section" id="experiencias">
             <div
                 class="container 
                         swiper-container 
                         swiper-container-initialized 
                         swiper-container-horizontal 
                         swiper-container-android 
-                        text-center  mt-4">
-                <div class="titulosSeccion">
-
-                    Experiencias
-                </div>
+                        text-center mt-4 bmb-experience-container">
+                <div class="titulosSeccion">Experiencias</div>
                 <div class="experienciaCarrusel owl-carousel owl-theme wiper-wrapper swiper-smooth ">
                     @foreach ($comentarios as $key => $exp)
                         <div class="ol-12 swiper-wrapper swiper-smooth ">
-                            <div class="m-1 card ">
+                            <div class="m-1 card bmb-experience-card">
                                 <Transition duration="550" name="nested">
                                     <div class="experiencia" v-if="showComment[{{ $exp->id_comentario }}]">
                                         {{ $exp->comentario }}
                                     </div>
                                 </Transition>
-                                <div class="m-2" style="cursor: pointer !important;">
-                                    <img src="web/images/img_comentarios/{{ $exp->imagen }}" class="card-img-top"
-                                        style="width: 100s%;">
+                                <div class="m-2 bmb-experience-img-wrap">
+                                    <img src="web/images/img_comentarios/{{ $exp->imagen }}" class="card-img-top">
                                 </div>
-                                <div class="card-body font-weight-bold"
-                                    style="color: #5b8676; width: 100%; cursor: pointer !important;">
+                                <div class="card-body font-weight-bold bmb-experience-author">
                                     {{ $exp->autor }}
                                     <i class="fa fa-eye fa-1x" aria-hidden="true"
                                         @mouseover="showComment[{{ $exp->id_comentario }}] = true"

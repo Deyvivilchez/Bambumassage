@@ -61,10 +61,8 @@
                     lazyLoad: false,
                     margin: 0,
                     padding:0,
-                    interval: 3000,
                     video: true,
-                    autoHeight:true,
-                    interval: 100,
+                    autoHeight:false,
                     autoplay:true,
                     autoplayTimeout:2000,
                     responsive: {
@@ -82,6 +80,12 @@
                         }
                     }
                     });
+            owl.find('img').on('load', function() {
+                owl.trigger('refresh.owl.carousel');
+            });
+            $(window).on('load resize', function() {
+                owl.trigger('refresh.owl.carousel');
+            });
             //fin contactanos inicio de carrucel
 
             $('.experienciaCarrusel').owlCarousel({
